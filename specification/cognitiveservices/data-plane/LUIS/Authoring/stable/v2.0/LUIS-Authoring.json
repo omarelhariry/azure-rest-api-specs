@@ -7806,11 +7806,20 @@
               "$ref": "#/definitions/OperationStatus"
             }
           },
-          "default": {
-            "description": "Error Response.",
-            "schema": {
+          "429": {
+            "$ref": "#/responses/429"
+          },
+          "400": {
+            "description": "This error can be returned if the request's parameters are incorrect meaning the required parameters are missing, malformed, or too large.\r\n\r\nThis error can be returned if the request's body is incorrect meaning the JSON is missing, malformed, or too large. ",
+            "schema": {             
               "$ref": "#/definitions/ErrorResponse"
             }
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
           }
         },
         "x-ms-examples": {
@@ -7855,11 +7864,20 @@
               "$ref": "#/definitions/OperationStatus"
             }
           },
-          "default": {
-            "description": "Error Response.",
-            "schema": {
+          "429": {
+            "$ref": "#/responses/429"
+          },
+          "400": {
+            "description": "This error can be returned if the request's parameters are incorrect meaning the required parameters are missing, malformed, or too large.\r\n\r\nThis error can be returned if the request's body is incorrect meaning the JSON is missing, malformed, or too large. ",
+            "schema": {             
               "$ref": "#/definitions/ErrorResponse"
             }
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
           }
         },
         "x-ms-examples": {
@@ -7904,11 +7922,20 @@
               "$ref": "#/definitions/OperationStatus"
             }
           },
-          "default": {
-            "description": "Error Response.",
-            "schema": {
+          "429": {
+            "$ref": "#/responses/429"
+          },
+          "400": {
+            "description": "This error can be returned if the request's parameters are incorrect meaning the required parameters are missing, malformed, or too large.\r\n\r\nThis error can be returned if the request's body is incorrect meaning the JSON is missing, malformed, or too large. ",
+            "schema": {             
               "$ref": "#/definitions/ErrorResponse"
             }
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
           }
         },
         "x-ms-examples": {
