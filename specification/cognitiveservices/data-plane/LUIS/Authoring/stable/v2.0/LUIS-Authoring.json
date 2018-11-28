@@ -7768,6 +7768,155 @@
           }
         }
       }
+    },
+    "/apps/{appId}/versions/{versionId}/connectedServices": {
+      "put": {
+        "summary": "Updates connected services",
+        "operationId": "Dispatch_BatchUpdateConnectedServices",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/AppIdInPath"
+          },
+          {
+            "$ref": "#/parameters/VersionIdInPath"
+          },
+          {
+            "name": "connectedServices",
+            "in": "body",
+            "description": "A JSON array of service connections.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DispatchConnectedServiceObject"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "schema": {
+              "$ref": "#/definitions/OperationStatus"
+            }
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Successful Batch Update Connected Services request": {
+            "$ref": "./examples/dispatch/SuccessfulUpdateConnectedServicesRequest.json"
+          }
+        }
+      },
+      "post": {
+        "summary": "Adds connected services",
+        "operationId": "Dispatch_BatchAddConnectedServices",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/AppIdInPath"
+          },
+          {
+            "$ref": "#/parameters/VersionIdInPath"
+          },
+          {
+            "name": "connectedServices",
+            "in": "body",
+            "description": "A JSON array of service connections.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DispatchConnectedServiceObject"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "schema": {
+              "$ref": "#/definitions/OperationStatus"
+            }
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Successful Batch Add Connected Services request": {
+            "$ref": "./examples/dispatch/SuccessfulAddConnectedServicesRequest.json"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes the services connected to the specified intents",
+        "operationId": "Dispatch_DeleteConnectedServices",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/AppIdInPath"
+          },
+          {
+            "$ref": "#/parameters/VersionIdInPath"
+          },
+          {
+            "name": "intentNames",
+            "in": "body",
+            "description": "The intent names.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DispatchConnectedServiceDeleteObject"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully operation.",
+            "schema": {
+              "$ref": "#/definitions/OperationStatus"
+            }
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Successful Batch Delete Connected Services request": {
+            "$ref": "./examples/dispatch/SuccessfulDeleteConnectedServicesRequest.json"
+          }
+        }
+      }
     }
   }, 
   "responses": {
@@ -7994,6 +8143,52 @@
         "intentName": {
           "description": "The idenfitied intent representing the utterance.",
           "type": "string"
+        }
+      }
+    },
+    "DispatchConnectedServiceDeleteObject": {
+      "description": "An intent to delete its disptch connected service.",
+      "type": "object",
+      "properties": {
+        "intentName": {
+          "description": "The name of the intent connected to the dispatch",
+          "type": "string"
+        }
+      }
+    },
+    "DispatchConnectedServiceObject": {
+      "description": "A disptch connected service.",
+      "type": "object",
+      "properties": {
+        "intentName": {
+          "description": "The name of the intent connected to the dispatch",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of the connected service [luis/qna]",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the connected LUIS app (only if type is luis)",
+          "type": "string"
+        },
+        "appId": {
+          "description": "The ID of the connected LUIS app (only if type is luis)",
+          "type": "string",
+          "format": "uuid"
+        },
+        "version": {
+          "description": "The version ID of the connected LUIS app (only if type is luis)",
+          "type": "string"
+        },
+        "region": {
+          "description": "The region of the connected LUIS app (only if type is luis)",
+          "type": "string"
+        },
+        "kbId": {
+          "description": "The ID of the connected QnA app (only if type is qna)",
+          "type": "string",
+          "format": "uuid"
         }
       }
     },
